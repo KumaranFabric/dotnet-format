@@ -40,7 +40,7 @@ export async function format(options: FormatOptions): Promise<boolean> {
     windowsVerbatimArguments: true,
   };
 
-  const dotnetFormatOptions = ["format"];
+  const dotnetFormatOptions = [""];
 
   if (options.workspace !== undefined && options.workspace != "") {
     if (options.workspaceIsFolder) {
@@ -89,8 +89,7 @@ export async function format(options: FormatOptions): Promise<boolean> {
     dotnetFormatOptions.push("--verbosity", options.logLevel);
   }
 
-  const dotnetPath: string = await which("dotnet", true);
-  const dotnetResult = await exec(`"${dotnetPath}"`, dotnetFormatOptions, execOptions);
+  const dotnetResult = await exec(`"dotnet-format"`, dotnetFormatOptions, execOptions);
 
   // When NOT doing only a dry-run we inspect the actual changed files
   if (!options.dryRun) {

@@ -2930,7 +2930,7 @@ function format(options) {
             ignoreReturnCode: true,
             windowsVerbatimArguments: true,
         };
-        const dotnetFormatOptions = ["format"];
+        const dotnetFormatOptions = [""];
         if (options.workspace !== undefined && options.workspace != "") {
             if (options.workspaceIsFolder) {
                 dotnetFormatOptions.push("-f");
@@ -2966,8 +2966,7 @@ function format(options) {
         if (options.logLevel !== undefined && options.logLevel != "") {
             dotnetFormatOptions.push("--verbosity", options.logLevel);
         }
-        const dotnetPath = yield io_1.which("dotnet", true);
-        const dotnetResult = yield exec_1.exec(`"${dotnetPath}"`, dotnetFormatOptions, execOptions);
+        const dotnetResult = yield exec_1.exec(`dotnet-format`, dotnetFormatOptions, execOptions);
         // When NOT doing only a dry-run we inspect the actual changed files
         if (!options.dryRun) {
             core_1.info("Checking changed files");
