@@ -1,7 +1,5 @@
 # GitHub Action for dotnet format
 
-[![CI Workflow Status](https://github.com/eero-dev/dotnet-format/workflows/CI/badge.svg)](https://github.com/eero-dev/dotnet-format/actions?query=workflow%3ACI)
-
 Run [dotnet format](https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-format) as part of your workflow to report formatting errors or auto fix violations as part of your pull request workflow.
 
 ## Usage
@@ -28,10 +26,10 @@ jobs:
 
       - name: Install dotnet-format
         run: dotnet tool install -g dotnet-format
-        
+
       - name: Run dotnet format
         id: format
-        uses: KumaranFabric/dotnet-format@3335bd27900226ea2d775375e22acf7624dc70d5
+        uses: KumaranFabric/dotnet-format@6f374ab26a7ff1f31c195e69cd0f8e9a336d3fe0
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           action: "check"
@@ -71,6 +69,7 @@ Name | Allowed values | Description
 `only-changed-files` | `true`, `false` (default) | Only changed files in the current pull request should be formatted. Only works when the trigger is a pull request.
 `fail-fast` | `true` (default), `false` | The job should fail if there's a formatting error. Only used with the `check` action.
 `workspace` | `.` | The solution or project file to operate on. In case you want to process all files in a certain folder, set the root folder here and specify the `workspaceIsFolder` option.
+`workspaceIsFolder` | `true` | Specify if the workspace should be treated as a folder.
 `include` | `.` | The files to include, delimited by space. Cannot be used together with the `workspace` option.
 `exclude` | `.` | Space delimited list of files and/or folders to ignore.
 `log-level` | `q[uiet]`, `m[inimal]`, `n[ormal]`, `d[etailed]`,  `diag[nostic]` | Sets the logging verbosity of the dotnet format process
