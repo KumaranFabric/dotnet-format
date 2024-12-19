@@ -21,7 +21,9 @@ function buildOptions(): FormatOptions {
 
   if (include !== undefined && include != "") {
     formatOptions.include = include;
-  } else if (workspace !== undefined && workspace != "") {
+  } 
+  
+  if (workspace !== undefined && workspace != "") {
     formatOptions.workspace = workspace;
   }
 

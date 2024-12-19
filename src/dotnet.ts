@@ -63,7 +63,6 @@ export async function format(options: FormatOptions): Promise<boolean> {
       debug("No files found for formatting");
       return false;
     }
-    dotnetFormatOptions.push("-f");
 
     dotnetFormatOptions.push("--include", filesToCheck.join(" "));
   }
@@ -128,7 +127,7 @@ export async function format(options: FormatOptions): Promise<boolean> {
   // else, we can just return rely on the exit code of the dotnet format process
   else
   {
-    info("dotnet format return code ${dotnetResult}");
+    info("dotnet format return code " + dotnetResult);
     return !!dotnetResult;
   }
 }
