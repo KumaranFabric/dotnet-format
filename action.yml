@@ -6,6 +6,8 @@ author:
   - "jfversluis"
   - "xt0rted"
   - "victor-alcazar"
+  - "eero-dev"
+  - "KumaranFabric"
 
 branding:
   icon: "file-text"
@@ -59,7 +61,7 @@ inputs:
     description: "Fixes styles according to formating rules."
     required: false
 
-  logLevel:
+  log-level:
     description: "Sets the logging verbosity of the dotnet format process. Allowed values are q[uiet], m[inimal], n[ormal], d[etailed], and diag[nostic]"
     required: false
 
@@ -68,5 +70,5 @@ outputs:
     description: "A value indicating if any files were formatted. If `action` is `check` we will inspect the exit code of `dotnet format` to be <> 0. If `action` is `fix` we see if there are changes to files with `git status -s`."
 
 runs:
-  using: "node12"
+  using: "node20"
   main: "dist/index.js"
